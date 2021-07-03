@@ -1,7 +1,8 @@
 '@ngrx/store';
-import { ActionReducerMap } from '@ngrx/store';
-import { Action } from 'rxjs/internal/scheduler/Action';
+import { Action, ActionReducerMap } from '@ngrx/store';
 import { IAppState } from '../core/interfaces';
-import { userReducer } from './books/books.reducers';
+import { bookReducer } from './books/books.reducers';
 
-
+export const rootReducer: ActionReducerMap<IAppState, Action> = {
+  booksStore: bookReducer,
+};

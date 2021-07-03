@@ -1,19 +1,15 @@
-import { createReducer, on } from "@ngrx/store";
-import { IBook } from "src/app/core/interfaces";
-import { updateId,  updateDescription, updateTitle, updatePageCount, updatePublishDate, updateBook  } from "./books-actions";
+import { createReducer, on } from '@ngrx/store';
+import { IBookStore } from 'src/app/core/interfaces';
+import { addBook } from './books-actions';
 
-const INITIAL_STATE: IBook = {
-    id:0,
-    title:'',
-    description:'',
-    pageCount:0,
-    publishDate:0,
+const INITIAL_STATE: IBookStore = {
+  books: [],
 };
 
-export const userReducer = createReducer(
-    INITIAL_STATE,
-    on(updateBook, (state, { id, title, description, pageCount, publishDate }) => ({ id, title, description, pageCount, publishDate })),
-    
-  );
-
-
+export const bookReducer = createReducer(
+  INITIAL_STATE,
+  on(addBook, (state, action) => ({
+    ...state,
+    books: [...state.books, action.newBook],
+  }))
+);

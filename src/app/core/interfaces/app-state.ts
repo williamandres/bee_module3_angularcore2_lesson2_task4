@@ -1,5 +1,5 @@
-import { IBook } from "./book";
+import { IBookStore } from './book-store';
 
 export interface IAppState {
-    user: IBook;
+  booksStore: IBookStore;
 }
